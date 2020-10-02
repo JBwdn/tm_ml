@@ -1,21 +1,16 @@
 import pandas
-
-from keras.models import Sequential
-from keras.layers import Dense
-from keras.wrappers.scikit_learn import KerasRegressor
-from sklearn.model_selection import cross_val_score
-from sklearn.model_selection import KFold
-from sklearn.preprocessing import StandardScaler
-from sklearn.pipeline import Pipeline
+import tensorflow as tf
 
 from one_hot_dna import one_hot_dna
 
-df = pandas.read_csv("training_data.csv", header=None)
-dataset = df.values
 
-X_seq = dataset[:,0]
-X = [one_hot_dna(seq) for seq in X_seq]
-Y = dataset[:,1]
+if __name__ == "__main__":
+    # Load training data and separate into input (X) and output (Y):
+    df = pandas.read_csv("training_data.csv", header=None)
+    dataset = df.values
 
-def baseline_model():
-
+    X_seq = dataset[:,0]
+    X = [one_hot_dna(seq) for seq in X_seq]
+    Y = dataset[:,1]
+    
+    pass
