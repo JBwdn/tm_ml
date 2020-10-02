@@ -30,5 +30,5 @@ if __name__ == "__main__":
 
     with open("training_data.csv", "w") as file:
         for seq, tm in training_data:
-            file.write(f"{seq},{tm},\n")
+            file.write(f"{seq},{tm}\n")
     pass
