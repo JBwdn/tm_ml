@@ -10,6 +10,11 @@ def random_dna_sequence(seq_length: int) -> str:
     return "".join(seq_list)
 
 def gen_training_set(n_seq: int, seq_len_min:int, seq_len_max:int) -> List[tuple]:
+    """
+    Create a set of training data, of size n_seq,
+    and of sequnces between seq_len_min and seq_len_max in length.
+    Using primer3 to calculate training Tm values.
+    """
     train_list = []
     for i in range(n_seq):
         train_seq = random_dna_sequence(seq_length = random.randrange(seq_len_min, seq_len_max))
@@ -20,5 +25,4 @@ def gen_training_set(n_seq: int, seq_len_min:int, seq_len_max:int) -> List[tuple
 
 
 if __name__ == "__main__":
-    print(gen_training_set(10, 10, 20))
     pass
