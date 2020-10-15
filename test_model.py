@@ -18,15 +18,16 @@ dataset = df.values
 X_seq = dataset[:, 0]
 X = np.array([one_hot_dna(seq, 50) for seq in X_seq], dtype=int)
 X_test = X[4000:]
+X_test_seq = X_seq[4000:]
 
 
 # Time how long each method takes to predict Tm across training data:
 a = perf_counter()
-tm_model.predict(X_test)
+nn_preds = tm_model.predict(X_test)
 b = perf_counter()
 print(f"NN model per prediction = {(b - a)/4000}s")
 
 a = perf_counter()
-tm_model.predict(X_test)
+primer3_preds = [primer3.calcTm(seq) for seq in X_test_seq]
 b = perf_counter()
-print(f"NN model per prediction = {(b - a)/4000}s")
+print(f"Primer3 model per prediction = {(b - a)/4000}s")
