@@ -1,12 +1,11 @@
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
 
 import tensorflow as tf
 from tensorflow import keras
 from tensorflow.keras import layers
 
-print(tf.__version__)
+print("TensorFlow version:", tf.__version__)
 
 from one_hot_dna import one_hot_dna
 
@@ -42,13 +41,16 @@ if __name__ == "__main__":
     predictions = tm_model.predict(X_test)
 
     print("Example model predictions:")
-    for i in range(len(predictions)):
+    for i in range(5):
         pred = round(float(predictions[i]), 5)
         real = round(Y_test[i], 5)
         diff = round(abs(float(predictions[i]) - Y_test[i]), 5)
         print(
-            f"{i}: Model={pred}, Real={real}, Diff={diff} \n\tSequence={X_test_seq[i]}"
+            f"""{i+1}: Model={pred}, Real={real}, Diff={diff}
+                Sequence={X_test_seq[i]}"""
         )
-        if i == 20:
-            break
+
+    # Save model to file for use later:
+    tm_model.save("models/tm_model")
+
     pass

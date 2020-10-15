@@ -18,7 +18,7 @@ def one_hot_dna(input_seq_str: str, max_seq_len: int):
     input_seq_upper = input_seq_str.upper()
     padding = "".join(["X" for i in range(max_seq_len - len(input_seq_str))])
     encoded_dna = [encode_dict[base] for base in input_seq_upper + padding]
-    np_encoded = np.array(encoded_dna)
+    np_encoded = np.array(encoded_dna, dtype=int)
     return np_encoded.flatten()
 
 
