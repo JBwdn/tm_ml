@@ -38,13 +38,16 @@ if __name__ == "__main__":
     tm_model.fit(X_train, Y_train, epochs=100)
 
     # Validate the model against the training set:
-    print("Validating model...")
+    print("Validating tm model...")
     predictions = tm_model.predict(X_test)
 
-    print("Example results:")
+    print("Example model predictions:")
     for i in range(len(predictions)):
+        pred = round(float(predictions[i]), 5)
+        real = round(Y_test[i], 5)
+        diff = round(abs(float(predictions[i]) - Y_test[i]), 5)
         print(
-            f"{i}: model={float(predictions[i])}, real={Y_test[i]}, diff={abs(float(predictions[i]) - Y_test[i])},sequence={X_test_seq[i]}"
+            f"{i}: Model={pred}, Real={real}, Diff={diff} \n\tSequence={X_test_seq[i]}"
         )
         if i == 20:
             break

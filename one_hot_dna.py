@@ -10,7 +10,7 @@ encode_dict = {
 }
 
 
-def one_hot_dna(input_seq_str: str, max_seq_len: int) -> List[list]:
+def one_hot_dna(input_seq_str: str, max_seq_len: int):
     """
     One hot encode a string format dna sequence. 
     Add zero padding up to the maximum length.
