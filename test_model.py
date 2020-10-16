@@ -21,7 +21,7 @@ X_test = X[4000:]
 X_test_seq = X_seq[4000:]
 
 
-# Time how long each method takes to predict Tm across training data:
+# Time how long each method takes to predict Tm across test data:
 a = perf_counter()
 nn_preds = tm_model.predict(X_test)
 b = perf_counter()
